@@ -1,44 +1,60 @@
-#include <stdio.h>
+#include "stdio.h"
 
-int main() {
-    // Simulação de movimentos de peças de xadrez
-
-    // Torre: 5 casas para a direita
-    for (int torre = 1; torre <= 5; torre++) {
-        printf("Direita\n");
+void Torre(int casas) {
+    if (casas > 0)
+    {
+        printf("Direita!\n");
+        Torre(casas - 1);
     }
+}
 
-    printf("\n"); // separador visual
-
-    // Bispo: 5 casas na diagonal (Cima, Direita)
-    int bispo = 1;
-    while (bispo <= 5) {
-        printf("Cima, Direita\n");
-        bispo++;
-    }
-
-    printf("\n"); // separador visual
-
-    // Rainha: 8 casas para a esquerda
-    int rainha = 1;
-    do {
-        printf("Esquerda\n");
-        rainha++;
-    } while (rainha <= 8);
-
-    printf("\n"); // separador visual
-    
-    // Movimentos "L" do Cavalo: 2 casas para baixo e 1 para a esquerda
-    int movimentos_cavalo = 1; // Quantidade de vezes que o cavalo se move 
-    
-    for (int m = 1; m <= movimentos_cavalo; m++) { // loop externo com for
-        int i = 1;
-        while (i <= 2) { // loop interno para duas casas para baixo
-            printf("Baixo\n");
-            i++;
+void Bispo(int casas_vert, int casas_hor) {
+    if (casas_vert > 0) {
+        for (int j = 0; j < casas_hor; j++) {
+            printf("Cima, Direita!\n");
         }
-        printf("Esquerda\n"); // uma casa perpendicularmente
+        Bispo(casas_vert - 1, casas_hor);
     }
+}
+
+
+void Rainha(int casas) {
+    if (casas > 0)
+    {
+        printf("Esquerda!\n");
+        Rainha(casas - 1);
+    }
+
+}
+
+
+void Cavalo() {
+    for (int movimento = 1; movimento <= 1; movimento++) {
+        int cima = 0;
+        while (cima < 2) {
+            printf("Cima!\n");
+            cima++;
+        }
+        for (int direita = 0; direita < 1; direita++) {
+            printf("Direita!\n");
+        }
+    }
+}
+
+
+int main()
+{   
+    printf("Movimento da torre\n");
+    Torre(5);
+    printf("\n");
+    printf("Movimento do bispo\n");
+    Bispo(5,1);
+    printf("\n");
+    printf("Movimento da rainha\n");
+    Rainha(8);
+    printf("\n");
+    printf("Movimento do cavalo\n");
+    Cavalo();
 
     return 0;
 }
