@@ -26,5 +26,19 @@ int main() {
         rainha++;
     } while (rainha <= 8);
 
+    printf("\n"); // separador visual
+    
+    // Movimentos "L" do Cavalo: 2 casas para baixo e 1 para a esquerda
+    int movimentos_cavalo = 1; // Quantidade de vezes que o cavalo se move 
+    
+    for (int m = 1; m <= movimentos_cavalo; m++) { // loop externo com for
+        int i = 1;
+        while (i <= 2) { // loop interno para duas casas para baixo
+            printf("Baixo\n");
+            i++;
+        }
+        printf("Esquerda\n"); // uma casa perpendicularmente
+    }
+
     return 0;
 }
